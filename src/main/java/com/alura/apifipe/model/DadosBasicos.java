@@ -2,8 +2,6 @@ package com.alura.apifipe.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.util.List;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record DTOModelos(List<DTODados> modelos) {
+public record DadosBasicos(String codigo, String nome) {
 }

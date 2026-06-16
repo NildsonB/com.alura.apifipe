@@ -1,12 +1,10 @@
 package com.alura.apifipe.model;
 
-import java.util.List;
-
 public class Dados {
     private String codigo;
     private String nome;
 
-    public Dados(DTODados dados){
+    public Dados(DadosBasicos dados){
         this.codigo = dados.codigo();
         this.nome = dados.nome();
     }

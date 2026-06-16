@@ -8,7 +8,7 @@ public class Veiculo {
     private String combustivel;
     private String codigoFipe;
 
-    public Veiculo(DTOVeiculos veiculos){
+    public Veiculo(DadosVeiculos veiculos){
         this.valor = veiculos.valor();
         this.marca = veiculos.marca();
         this.modelo = veiculos.modelo();

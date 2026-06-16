@@ -34,7 +34,7 @@ public class Principal {
         }
         //Consumo da API e conversão para classe
         String json = consulmoApi.obterDados(endereco);
-        List<DTODados> dadosMarcas = conversor.converteLista(json, DTODados.class);
+        List<DadosBasicos> dadosMarcas = conversor.converteLista(json, DadosBasicos.class);
         List<Dados> marcas = dadosMarcas.stream()
                 .map(d -> new Dados(d))
                 .sorted(Comparator.comparing(Dados::getNome))
@@ -45,7 +45,7 @@ public class Principal {
         String codigoMarca = entrada.nextLine();
         endereco = endereco + "/" + codigoMarca + "/modelos";
         json = consulmoApi.obterDados(endereco);
-        DTOModelos dadosModelos = conversor.converteDados(json, DTOModelos.class);
+        DadosModelos dadosModelos = conversor.converteDados(json, DadosModelos.class);
         List<Dados> modelos = dadosModelos.modelos().stream()
                 .map(m -> new Dados(m))
                 .sorted(Comparator.comparing(Dados::getNome))
@@ -64,12 +64,12 @@ public class Principal {
         endereco = endereco + "/" + codigoModelo + "/anos";
         System.out.println(endereco);
         json = consulmoApi.obterDados(endereco);
-        List<DTODados> dadosPorAno = conversor.converteLista(json, DTODados.class);
+        List<DadosBasicos> dadosPorAno = conversor.converteLista(json, DadosBasicos.class);
         //Apresentação dos dados de cada ano registrado
         System.out.println("Todos os veículos com os valores por ano:");
         for (int i = 0; i < dadosPorAno.size(); i++) {
             json = consulmoApi.obterDados(endereco + "/" + dadosPorAno.get(i).codigo());
-            DTOVeiculos dadosVeiculo = conversor.converteDados(json, DTOVeiculos.class);
+            DadosVeiculos dadosVeiculo = conversor.converteDados(json, DadosVeiculos.class);
             Veiculo veiculo = new Veiculo(dadosVeiculo);
             System.out.println(veiculo);
         }
